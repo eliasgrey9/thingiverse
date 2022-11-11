@@ -1,0 +1,45 @@
+body {
+  /* display: flex;
+  justify-content: center; */
+  width: 100vw;
+  height: auto;
+  margin: 0;
+}
+button:hover {
+  cursor: pointer;
+}
+
+.main-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: lightgray;
+  height: 12vmin;
+  font-size: 3vmin;
+  padding: 2.5vmin;
+}
+.navLinks {
+  padding: 2vmin;
+}
+.all-tiles-img {
+  display: flex;
+  flex-direction: column;
+  width: 25vmin;
+  height: auto;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: lightgray solid 1px;
+  width: 25vmin;
+  height: auto;
+  margin: 2vmin;
+}
+.tiles {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
