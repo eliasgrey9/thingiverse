@@ -13,6 +13,16 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+router.post("/", async (req, res, next) => {
+  try {
+    const myVar = await Tile.create(req.body);
+    res.send(myVar);
+  } catch (error) {
+    console.log("POST request error", error);
+    next(error);
+  }
+});
+
 //gets a single example from the db
 router.get("/:id", async (req, res, next) => {
   try {

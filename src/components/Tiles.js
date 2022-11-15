@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectTiles, fetchTiles } from "../reducers/tileSlice";
 // import { addToCart } from "../reducers/cartSlice";
 // import { cartSelect } from "../reducers/cartSlice";
-
+import { Link } from "react-router-dom";
 //import all neccesary thunks!
 
 const Tiles = () => {
@@ -17,12 +17,6 @@ const Tiles = () => {
     dispatch(fetchTiles());
   }, []);
 
-  //   const add2Cart = (product) => {
-  //     console.log(product);
-  //     console.log("cart", cart);
-  //     dispatch(addToCart(product));
-  //   };
-
   return (
     <>
       <div className="tiles">
@@ -33,15 +27,9 @@ const Tiles = () => {
           <div key={tile.id} className="tile">
             <h4>{tile.title}</h4>
             <img className="all-tiles-img" src={tile.imageUrl} />
-
-            <button
-              id={tile.id}
-              onClick={() => {
-                add2Cart(tile);
-              }}
-            >
-              Details
-            </button>
+            <Link to={`/tiles/${tile.id}`}>
+              <button>Details</button>
+            </Link>
           </div>
         ))}
       </div>

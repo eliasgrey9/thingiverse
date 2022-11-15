@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Tiles } from "./index";
+import { Tiles, CreateTile, SingleTile } from "./index";
 import { Route, Routes } from "react-router-dom";
 
 const Main = () => {
@@ -25,6 +25,22 @@ const Main = () => {
             element={
               <>
                 <Tiles />
+              </>
+            }
+          />
+          <Route
+            path="/create"
+            element={
+              <>
+                <CreateTile />
+              </>
+            }
+          />
+          <Route
+            path="/tiles/:tileId"
+            element={
+              <>
+                <SingleTile />
               </>
             }
           />

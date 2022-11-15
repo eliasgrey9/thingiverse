@@ -13,30 +13,18 @@ export const fetchTiles = createAsyncThunk("fetchTiles", async () => {
   }
 });
 
-// export const addCampusAsync = createAsyncThunk(
-//   "campuses/addCampus",
-//   async (payload) => {
-//     try {
-//       const { data } = await axios.post("/api/campuses", payload);
-//       return data;
-//     } catch (error) {
-//       console.log("Couldn't add Campus!", error);
-//     }
-//   }
-// );
-// export const deleteCampusAsync = createAsyncThunk(
-//   "campuses/deleteCampus",
-//   async (id) => {
-//     console.log("PAYLOAD", id);
-//     try {
-//       const { data } = await axios.delete(`/api/campuses/${id}`);
-
-//       return data;
-//     } catch (error) {
-//       console.log("Couldn't delete Campus!", error);
-//     }
-//   }
-// );
+export const addTileAsync = createAsyncThunk(
+  "tiles/addTile",
+  async (payload) => {
+    try {
+      const { data } = await axios.post("/api/tiles", payload);
+      console.log("data", data);
+      return data;
+    } catch (error) {
+      console.log("Couldn't add tile!", error);
+    }
+  }
+);
 
 const tileSlice = createSlice({
   name: "tiles",
@@ -48,9 +36,10 @@ const tileSlice = createSlice({
       return { tiles: action.payload };
     });
 
-    // builder.addCase(addCampusAsync.fulfilled, (state, action) => {
-    //   state.campuses.push(action.payload);
-    // });
+    builder.addCase(addTileAsync.fulfilled, (state, action) => {
+      console.log(action.payload);
+      state.tiles.push(action.payload);
+    });
 
     // builder.addCase(deleteCampusAsync.fulfilled, (state, action) => {
     //   return state.campuses.campuses;
