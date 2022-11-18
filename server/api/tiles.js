@@ -35,7 +35,7 @@ router.get("/:id", async (req, res, next) => {
 //edits a single example from the db
 router.put("/:id", async (req, res, next) => {
   try {
-    const edit = await Example.findByPk(req.params.id);
+    const edit = await Tile.findByPk(req.params.id);
     res.send(await edit.update(req.body));
   } catch (error) {
     console.log("Edit request error", error);

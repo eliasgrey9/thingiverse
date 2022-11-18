@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const initialState = { tiles: [] };
+const initialState = [];
 
 // Thunk
 export const fetchTiles = createAsyncThunk("fetchTiles", async () => {
@@ -26,6 +26,18 @@ export const addTileAsync = createAsyncThunk(
   }
 );
 
+export const updateSingleTile = createAsyncThunk(
+  "updateSingleTile",
+
+  async (tile) => {
+    try {
+      const { data } = await axios.put(`/api/tiles/${tile.id}`, tile);
+      return data;
+    } catch (error) {
+      console.log("Couldn't fetch Single tile!", err);
+    }
+  }
+);
 const tileSlice = createSlice({
   name: "tiles",
   initialState,
@@ -33,12 +45,16 @@ const tileSlice = createSlice({
 
   extraReducers: (builder) => {
     builder.addCase(fetchTiles.fulfilled, (state, action) => {
-      return { tiles: action.payload };
+      return action.payload;
     });
 
     builder.addCase(addTileAsync.fulfilled, (state, action) => {
+      state.push(action.payload);
+    });
+    builder.addCase(updateSingleTile.fulfilled, (state, action) => {
       console.log(action.payload);
-      state.tiles.push(action.payload);
+      const index = state.findIndex((tile) => tile.id === action.payload.id);
+      state[index] = action.payload;
     });
 
     // builder.addCase(deleteCampusAsync.fulfilled, (state, action) => {
@@ -48,6 +64,6 @@ const tileSlice = createSlice({
 });
 
 export const selectTiles = (state) => {
-  return state.tiles.tiles;
+  return state.tiles;
 };
 export default tileSlice;

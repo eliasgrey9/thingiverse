@@ -7552,12 +7552,32 @@ var CreateTile = function CreateTile() {
     _useState4 = _slicedToArray(_useState3, 2),
     imageUrl = _useState4[0],
     setUrl = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState6 = _slicedToArray(_useState5, 2),
+    laserSpeed = _useState6[0],
+    setLaserSpeed = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState8 = _slicedToArray(_useState7, 2),
+    laserPower = _useState8[0],
+    setLaserPower = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState10 = _slicedToArray(_useState9, 2),
+    fileDescription = _useState10[0],
+    setFiledescription = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState12 = _slicedToArray(_useState11, 2),
+    fileInstructions = _useState12[0],
+    setFileInstructions = _useState12[1];
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   function handleSubmit(e) {
     e.preventDefault();
     dispatch((0,_reducers_tileSlice__WEBPACK_IMPORTED_MODULE_2__.addTileAsync)({
       title: title,
-      imageUrl: imageUrl
+      imageUrl: imageUrl,
+      laserSpeed: laserSpeed,
+      laserPower: laserPower,
+      fileDescription: fileDescription,
+      fileInstructions: fileInstructions
     }));
     dispatch((0,_reducers_tileSlice__WEBPACK_IMPORTED_MODULE_2__.fetchTiles)());
   }
@@ -7578,6 +7598,34 @@ var CreateTile = function CreateTile() {
     value: imageUrl,
     onChange: function onChange(e) {
       return setUrl(e.target.value);
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Laser Speed", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "imgUrl",
+    value: laserSpeed,
+    onChange: function onChange(e) {
+      return setLaserSpeed(e.target.value);
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Laser Power", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "imgUrl",
+    value: laserPower,
+    onChange: function onChange(e) {
+      return setLaserPower(e.target.value);
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "File Description", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "imgUrl",
+    value: fileDescription,
+    onChange: function onChange(e) {
+      return setFiledescription(e.target.value);
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Instructions", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "imgUrl",
+    value: fileInstructions,
+    onChange: function onChange(e) {
+      return setFileInstructions(e.target.value);
     }
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "submit",
@@ -7669,11 +7717,14 @@ var SingleTile = function SingleTile() {
     dispatch((0,_reducers_singleTileSlice__WEBPACK_IMPORTED_MODULE_2__.fetchSingleTile)(tileId));
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    key: tile.id,
-    className: "tile"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Title: ", tile.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    className: "singleTileBody"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    "class": "singleTile",
+    key: tile.id
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, " ", tile.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    className: "single-tile-img",
     src: tile.imageUrl
-  })));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Laser Settings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Speed: ", tile.laserSpeed, "mm/s"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Power: ", tile.laserPower, "%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Description: ", tile.fileDescription), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Instructions: ", tile.fileInstructions), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Download file"))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SingleTile);
 
@@ -7695,24 +7746,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _reducers_tileSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../reducers/tileSlice */ "./src/reducers/tileSlice.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
-// import { addToCart } from "../reducers/cartSlice";
-// import { cartSelect } from "../reducers/cartSlice";
 
 //import all neccesary thunks!
 
 var Tiles = function Tiles() {
   var tiles = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(_reducers_tileSlice__WEBPACK_IMPORTED_MODULE_2__.selectTiles);
-  //   const cart = useSelector(cartSelect);
-
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
 
   // ** Loads thunk after page loads once, input your thunk! **/
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     dispatch((0,_reducers_tileSlice__WEBPACK_IMPORTED_MODULE_2__.fetchTiles)());
   }, []);
+  function handleSubmit(tile) {
+    console.log("tile", tile);
+    var updatedTile = _objectSpread({}, tile);
+    updatedTile.likes += 1;
+    dispatch((0,_reducers_tileSlice__WEBPACK_IMPORTED_MODULE_2__.updateSingleTile)(updatedTile));
+  }
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "tiles"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "All Tiles")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -7721,12 +7777,31 @@ var Tiles = function Tiles() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       key: tile.id,
       className: "tile"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+      to: "/tiles/".concat(tile.id)
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, tile.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
       className: "all-tiles-img",
       src: tile.imageUrl
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "collectLikeShareBox"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "collectBox"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
       to: "/tiles/".concat(tile.id)
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Details")));
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "collect"
+    }, "Collect +"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "likeShareBox"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      onClick: function onClick(e) {
+        return handleSubmit(tile);
+      },
+      className: "like"
+    }, "Like", tile.likes)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+      to: "/tiles"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "share"
+    }, "Share")))));
   })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Tiles);
@@ -7845,7 +7920,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "addTileAsync": () => (/* binding */ addTileAsync),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
 /* harmony export */   "fetchTiles": () => (/* binding */ fetchTiles),
-/* harmony export */   "selectTiles": () => (/* binding */ selectTiles)
+/* harmony export */   "selectTiles": () => (/* binding */ selectTiles),
+/* harmony export */   "updateSingleTile": () => (/* binding */ updateSingleTile)
 /* harmony export */ });
 /* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -7856,9 +7932,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 
-var initialState = {
-  tiles: []
-};
+var initialState = [];
 
 // Thunk
 var fetchTiles = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createAsyncThunk)("fetchTiles", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -7915,19 +7989,52 @@ var addTileAsync = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createAsyncT
     return _ref2.apply(this, arguments);
   };
 }());
+var updateSingleTile = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createAsyncThunk)("updateSingleTile", /*#__PURE__*/function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(tile) {
+    var _yield$axios$put, data;
+    return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.prev = 0;
+            _context3.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_0___default().put("/api/tiles/".concat(tile.id), tile);
+          case 3:
+            _yield$axios$put = _context3.sent;
+            data = _yield$axios$put.data;
+            return _context3.abrupt("return", data);
+          case 8:
+            _context3.prev = 8;
+            _context3.t0 = _context3["catch"](0);
+            console.log("Couldn't fetch Single tile!", err);
+          case 11:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3, null, [[0, 8]]);
+  }));
+  return function (_x2) {
+    return _ref3.apply(this, arguments);
+  };
+}());
 var tileSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createSlice)({
   name: "tiles",
   initialState: initialState,
   reducers: {},
   extraReducers: function extraReducers(builder) {
     builder.addCase(fetchTiles.fulfilled, function (state, action) {
-      return {
-        tiles: action.payload
-      };
+      return action.payload;
     });
     builder.addCase(addTileAsync.fulfilled, function (state, action) {
+      state.push(action.payload);
+    });
+    builder.addCase(updateSingleTile.fulfilled, function (state, action) {
       console.log(action.payload);
-      state.tiles.push(action.payload);
+      var index = state.findIndex(function (tile) {
+        return tile.id === action.payload.id;
+      });
+      state[index] = action.payload;
     });
 
     // builder.addCase(deleteCampusAsync.fulfilled, (state, action) => {
@@ -7937,7 +8044,7 @@ var tileSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createSlice)({
 });
 
 var selectTiles = function selectTiles(state) {
-  return state.tiles.tiles;
+  return state.tiles;
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (tileSlice);
 
@@ -7954,16 +8061,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
 /* harmony import */ var _reducers_tileSlice__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../reducers/tileSlice */ "./src/reducers/tileSlice.js");
-/* harmony import */ var _reducers_singleTileSlice__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../reducers/singleTileSlice */ "./src/reducers/singleTileSlice.js");
 
 
-
-var store = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__.configureStore)({
+var store = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.configureStore)({
   reducer: {
-    tiles: _reducers_tileSlice__WEBPACK_IMPORTED_MODULE_0__["default"].reducer,
-    tile: _reducers_singleTileSlice__WEBPACK_IMPORTED_MODULE_1__["default"].reducer
+    tiles: _reducers_tileSlice__WEBPACK_IMPORTED_MODULE_0__["default"].reducer
   }
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store);
